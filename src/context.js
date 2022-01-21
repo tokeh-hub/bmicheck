@@ -19,8 +19,10 @@ export const AppProvider = ({ children }) => {
     const [unitW, setUnitW] = useState('kg')
     const [home, setHome] = useState(true);
     const [result, setResult] = useState(false)
-
+    const[ft,setFt] = useState('');
+    const[inch,setInch] = useState('')
     var axios = require("axios").default;
+    
     const options = useMemo(() => {
         return {
             method: 'POST',
@@ -32,12 +34,12 @@ export const AppProvider = ({ children }) => {
             },
             data: {
                 weight: { value: `${weight}`, unit: `${unitW}` },
-                height: { value: `${height}`, unit: `${unitH}` },
+                height: { value: `${unitH==='ft-in'?`${ft}-${inch}`:`${height}`}`, unit: `${unitH}` },
                 sex: `${selectedSex ? 'f' : 'm'}`,
                 age: `${age}`
             }
         }
-    }, [height, weight, selectedSex, age, unitW, unitH])
+    }, [height, weight, selectedSex, age, unitW, unitH,ft,inch])
 
     const fetch = useCallback(() => axios.request(options).then(function (response) {
         console.log(response.data);
@@ -50,8 +52,13 @@ export const AppProvider = ({ children }) => {
     }), [options, axios]);
 
     useEffect(() => {
-        if (age !== '' && weight !== '' && height !== '') { fetch(); }
+        if (age !== '' && weight !== '' && height !== '') { fetch() }
     }, [age, height, weight, fetch])
+    useEffect(()=>{
+        if(unitH==="ft-in"){
+            if(ft!=='' && inch!=='' && age !== '' && weight !== ''){fetch()}
+        }
+    },[unitH,ft,inch,age,weight,fetch])
 
     return <AppContext.Provider value={{
         weight,
@@ -81,7 +88,11 @@ export const AppProvider = ({ children }) => {
         setWaist,
         setHip,
         setSelected,
-        selectedSex
+        selectedSex,
+        ft,
+        setFt,
+        inch,
+        setInch
     }}>{children}</AppContext.Provider>
 
 }

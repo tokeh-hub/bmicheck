@@ -5,29 +5,38 @@ import genders from './gender'
 
 function Home() {
 
-  const { setHeight, setWeight, setHome, sex, setSex, setResult, setSelected, height, weight, age, setAge, unitH, unitW, setUnitH, setUnitW } = useGlobalContext()
+  const { setHeight, setWeight, setHome, sex, setSex,ft,inch,setFt,setInch, setResult, setSelected, height, weight, age, setAge, unitH, unitW, setUnitH, setUnitW } = useGlobalContext()
   const handleChange = (e) => {
     setSex(e.target.value);
     if (sex === 'Female') { setSelected(true) }
     if (sex === 'Male') { setSelected(false) }
   }
-
+  
   return (
     <div className='home'>
       <h1 style={{ paddingBottom: "13px" }}>BMI Calculator</h1>
       <div className='height'>
-        <h4>Height (cm)</h4>
+        <h4>Height ({unitH})</h4>
+      
         <div className='row'>
+        {unitH==="ft-in"? <div>
+                 <input type='number' value={ft} placeholder='ft' onChange={(e)=>setFt(e.target.value)}></input>
+                 <input type='text' value={inch} placeholder='inch' onChange={(e)=>setInch(e.target.value)}></input>
+               </div>:
           <input type='text' value={height} onChange={(e) => setHeight(e.target.value)}></input>
-          <select value={unitH} onChange={e => setUnitH(e.target.value)}>
-            <option value="cm">cm</option>
-            <option value="ft-in">ft-in</option>
-          </select>
+  }
+        
+                 <select value={unitH} onChange={e => {setUnitH(e.target.value)}}>
+                 <option value="cm">cm</option>
+                 <option value="ft-in">ft-in</option>
+               </select>
+    
+          
         </div>
       </div>
       <hr></hr>
       <div className='weight'>
-        <h4>Weight(kg)</h4>
+        <h4>Weight({unitW})</h4>
         <div className='row'>
           <input type='text' value={weight} onChange={(e) => setWeight(e.target.value)}></input>
           <select value={unitW} onChange={e => setUnitW(e.target.value)}>

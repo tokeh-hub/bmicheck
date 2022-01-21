@@ -4,7 +4,7 @@ import Loading from './Loading';
 
 export default function Result() {
 
-    const { idealWeight, bmi, risk, status, loading, setLoading, setHome, setResult, setWeight, setHeight, setAge } = useGlobalContext();
+    const { idealWeight, bmi, risk, status, loading, setLoading, setHome, setResult, setWeight, setHeight, setAge,setFt,setInch } = useGlobalContext();
     const setFunction = () => {
         if (bmi !== '' && idealWeight !== '' && risk !== '' && status !== '') { setLoading(false) }
         // else{setLoading(true)}
@@ -27,7 +27,9 @@ export default function Result() {
                                 setHome(true);
                                 setWeight('');
                                 setHeight('');
-                                setAge('')
+                                setAge('');
+                                setFt('');
+                                setInch('')
                             }}>Calculate BMI again</button>
                     </div>
                 </div>
