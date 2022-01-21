@@ -1,38 +1,175 @@
-.App {
-  text-align: center;
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  width: 100vw;
+  height: 100vh;
+  font-size: 14px;
+  background-color: #F775C1;;
+ 
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App{
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  padding: auto;
+}
+
+.home{
+  margin-top: 90px;
+  background-color: white;
+  width: 70vw;
+  height: auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 3px;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
+}
+.row{
+  display: grid;
+  grid-template-columns: repeat(2,60%);
+
+}
+
+input{
+  width: 60%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  height: 30px;
+  padding: 10px;
+  
+}
+input[type=text],input[type=number]{
+        padding-left: 10px;
+}
+select{
+  width: 60%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  height: 30px;
+}
+hr{
+  margin-bottom: 20px;
+}
+.calculate{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+  /* width: 500px; */
+}
+.calc-again{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+button{
+  width: 400px;
+  padding: 20px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: transparent;
+  outline: none;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.result{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: center;
+}
+header{
+  font-size: 40px;
   color: white;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.values{
+  margin-top: 20px;
+  background-color: white;
+  width: 70vw;
+  height: auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 3px;
+  box-shadow: 5px 5px 8px 8px rgba(0, 0, 0, 0.3);
+}
+.result section{
+  margin-bottom:15px;
+  font-size: 25px;
+  line-height: 40px;
+}
+span{
+  /* font-size: ; */
+  font-weight: 600;
+}
+.loading{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(300px);
+}
+.loading h2{
+  color: white;
+  padding-top: 20px;
+  font-size: 30px;
+  letter-spacing: 10px;
+}
+.result button{
+  margin-top: 20px;
+  width:380px;
+}
+button:hover{
+  background-color: lightpink;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (max-width:650px) {
+  .values{
+    margin-top: 20px;
+    background-color: white;
+    width: 80vw;
+    height: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 3px;
+    box-shadow: 5px 5px 8px 8px rgba(0, 0, 0, 0.3);
   }
-  to {
-    transform: rotate(360deg);
+  .result section{
+    margin-bottom:15px;
+    font-size: 15px;
+    line-height: 40px;
+  }
+  .result button{
+    margin-top: 20px;
+    width:200px;
+  }
+  .home{
+    margin-top: 60px;
+    background-color: white;
+    width: 90vw;
+    height: auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 3px;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
   }
 }
